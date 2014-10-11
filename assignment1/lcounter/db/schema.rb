@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 20141008110642) do
   create_table "users", force: true do |t|
     t.string   "username"
     t.string   "password"
-    t.integer  "count"
+    t.integer  "count",      default: 1, null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,10 +2,13 @@ class UsersController < ApplicationController
   skip_before_action :verify_authenticity_token
 
   def index
-    @new_user = Users.new
   end
   def create
-    @response = Users.signup(params)
+    if params[:login]
+      Users.login(params)
+    elsif params[:register]
+      @response = Users.signup(params)
+    end
     respond_to do |format|
       format.json { render json: @response }
     end
@@ -15,6 +18,13 @@ class UsersController < ApplicationController
     respond_to do |format|
       format.json { render json: @response }
     end
+  end
+  def logout
+    respond_to do |format|
+      format.js
+    end
+    # session[:username] = nil
+    # session[:login_count] = nil
   end
   def clear
     Users.clear()

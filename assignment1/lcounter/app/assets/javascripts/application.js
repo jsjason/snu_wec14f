@@ -14,3 +14,11 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+$(document).ready(function(){
+    $("input[name='login']").click(function() {
+        $.ajax({
+            url: "/login",
+            type: 'POST'
+        })
+    });
+});

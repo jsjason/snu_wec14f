@@ -13,11 +13,10 @@ end
 class Users < ActiveRecord::Base
   validates_with UsersValidator
   def self.login(params)
-    # Update db to increment count and return the value
     @user = Users.find_by(:username => params[:username],
                           :password => params[:password])
     if @user
-      @user.update_attribute("count", @user.count + 1);
+      @user.update_attribute('count', @user.count + 1);
       response = { :user_name => @user.username, :login_count => @user.count }
     else
       response = { :error_code => '-4'}
@@ -32,7 +31,8 @@ class Users < ActiveRecord::Base
     else
       response = { :error_code => user.errors[:error_code] }
     end
-    return response  end
+    return response
+  end
   def self.clear
     Users.delete_all
   end

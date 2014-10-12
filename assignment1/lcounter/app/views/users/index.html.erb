@@ -1,0 +1,12 @@
+<h1>Welcome to Yunseong's Login Counter</h1>
+<div id="notice">
+    <p>
+    </p>
+</div>
+<%= form_for :user, remote:true  do |f| %>
+Username <%= f.text_field(:username) %>
+Password <%= f.text_field(:password) %>
+  <%= f.submit 'Login', :name => 'login' %>
+  <%= f.submit 'Add User', :name => 'register' %>
+
+<% end %>
